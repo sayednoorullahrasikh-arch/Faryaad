@@ -1,10 +1,289 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>مدیریت سایت</title>
-  </head>
-  <body>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  </body>
+<!DOCTYPE html><html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>فریاد در تاریکی | رسانه حقوق زنان و کودکان</title>
+  <meta name="description" content="فریاد در تاریکی – رسانه‌ای مستقل برای آگاهی‌بخشی و دفاع از حقوق زنان و کودکان. مقالات، قوانین، روایت‌ها و منابع حمایتی." />
+  <meta name="theme-color" content="#5B2C6F" />
+  <meta property="og:title" content="فریاد در تاریکی" />
+  <meta property="og:description" content="رسانه‌ای برای آگاهی و عدالت؛ حقوق زنان و کودکان." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fa_IR" />
+  <style>
+    :root{
+      --primary:#5B2C6F; /* ارغوانی تیره */
+      --accent:#F1C40F;  /* طلایی گرم */
+      --bg:#F4F4F4;      /* پس‌زمینه روشن */
+      --danger:#C0392B;  /* هشدار */
+      --text:#1b1b1b;    
+      --muted:#6b6b6b;
+      --card:#ffffff;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: Vazirmatn, IRANSans, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg); color:var(--text); line-height:1.7;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    header{position:sticky; top:0; z-index:50; background:#fff; box-shadow:var(--shadow)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0}
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,var(--primary),#3c144d); display:grid; place-items:center; color:#fff; box-shadow:var(--shadow)}
+    .logo svg{width:22px; height:22px}
+    .brand-title{font-weight:800; letter-spacing:.2px}
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{padding:10px 12px; border-radius:10px; font-weight:600; color:#3a3a3a}
+    .menu a:hover{background:#f1ecf6; color:var(--primary)}
+    .hamburger{display:none; background:#fff; border:1px solid #eee; padding:8px 10px; border-radius:12px}.hero{position:relative; overflow:hidden; background:radial-gradient(1200px 600px at 80% -10%, rgba(91,44,111,.25), transparent), #0f0d14 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%235B2C6F"/><stop offset="1" stop-color="%233c144d"/></linearGradient></defs><path d="M0,500 C300,430 900,630 1200,520 L1200,600 L0,600 Z" fill="url(%23g)"/></svg>') no-repeat bottom/cover; color:#fff}
+.hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:32px; align-items:center; padding:56px 0}
+.badge{display:inline-flex; align-items:center; gap:8px; background:rgba(241,196,15,.15); color:#ffeb9b; padding:6px 10px; border-radius:999px; font-weight:700; border:1px solid rgba(241,196,15,.35)}
+.hero h1{margin:12px 0 8px; font-size:clamp(28px,4.5vw,44px)}
+.hero p{color:#e9e3f1; font-size:clamp(15px,2.3vw,18px)}
+.cta{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
+.btn{display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border:none; border-radius:14px; font-weight:800; cursor:pointer}
+.btn-primary{background:var(--accent)}
+.btn-outline{background:transparent; color:#fff; border:2px solid rgba(255,255,255,.5)}
+
+.cards{display:grid; grid-template-columns:repeat(12,1fr); gap:18px; margin-top:-28px}
+.card{grid-column:span 6; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+.card h3{margin:0 0 8px}
+.card small{color:var(--muted)}
+.card .tag{display:inline-block; padding:3px 8px; border-radius:999px; background:#f5eefb; color:var(--primary); font-weight:700; font-size:12px}
+
+.section{padding:48px 0}
+.section h2{font-size:clamp(22px,3.5vw,30px); margin:0 0 12px}
+.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+.post{grid-column:span 4; background:#fff; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+.post img{height:180px; object-fit:cover}
+.post .padded{padding:14px}
+.post h3{margin:0 0 6px; font-size:18px}
+
+.quote{background:#120f19; color:#f7f6fb; border-radius:22px; padding:24px; box-shadow:var(--shadow); display:flex; align-items:center; gap:18px}
+
+.legal{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+.legal .item{grid-column:span 6; background:#fff; padding:16px; border-radius:16px; box-shadow:var(--shadow)}
+
+.about{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+.about .box{background:#fff; padding:18px; border-radius:18px; box-shadow:var(--shadow)}
+
+.contact{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+form{background:#fff; padding:18px; border-radius:18px; box-shadow:var(--shadow)}
+label{font-weight:700}
+input, textarea{width:100%; padding:12px 14px; margin-top:6px; margin-bottom:12px; border-radius:12px; border:1px solid #e7e7e7; font-family:inherit}
+textarea{min-height:130px}
+.note{background:#fff7f7; border:1px dashed #ffc6c6; color:#7a1b1b; padding:12px 14px; border-radius:14px}
+
+footer{margin-top:40px; background:#0f0d14; color:#cfc7d8; padding:26px 0}
+.footgrid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:18px}
+.footgrid a{color:#e9e3f1}
+
+/* ریسپانسیو */
+@media (max-width: 900px){
+  .hero-inner{grid-template-columns:1fr}
+  .cards .card{grid-column:span 12}
+  .post{grid-column:span 6}
+  .legal .item{grid-column:span 12}
+  .about{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .menu{display:none}
+  .hamburger{display:inline-flex}
+}
+@media (max-width: 580px){
+  .post{grid-column:span 12}
+  .footgrid{grid-template-columns:1fr}
+}
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "فریاد در تاریکی",
+    "url": "https://example.com",
+    "description": "رسانه‌ای مستقل برای آگاهی‌بخشی و دفاع از حقوق زنان و کودکان",
+    "inLanguage": "fa-IR",
+    "publisher": {"@type":"Organization","name":"Faryad dar Tariki"}
+  }
+  </script>
+</head>
+<body>
+  <!-- هدر -->
+  <header>
+    <div class="container nav" role="navigation" aria-label="ناوبری اصلی">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true">
+          <!-- آیکن میکروفون -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <div class="brand-title">فریاد در تاریکی</div>
+      </a>
+      <nav class="menu" id="menu">
+        <a href="#articles">آخرین مقالات</a>
+        <a href="#women">حقوق زنان</a>
+        <a href="#children">حقوق کودکان</a>
+        <a href="#laws">قوانین و منابع</a>
+        <a href="#contact">تماس با ما</a>
+      </nav>
+      <button class="hamburger" aria-label="باز کردن منو" onclick="toggleMenu()">☰</button>
+    </div>
+  </header>  <!-- هیرو -->  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="badge" aria-label="شعار">
+          ✨ برای آن‌که صدا خاموش نماند
+        </span>
+        <h1>رسانه‌ای برای آگاهی و عدالت</h1>
+        <p>
+          در «فریاد در تاریکی»، روایت‌ها، قوانین و تحلیل‌های مرتبط با حقوق <strong>زنان</strong> و <strong>کودکان</strong> را گرد می‌آوریم تا تاریکی ناآگاهی را بشکنیم و به روشنایی دسترسی به حق نزدیک‌تر شویم.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#articles">شروع مطالعه</a>
+          <a class="btn btn-outline" href="#about">درباره ما</a>
+        </div>
+      </div>
+      <div class="cards" aria-label="کارت‌های برجسته">
+        <article class="card" aria-labelledby="c1h"><div class="tag">یادداشت سردبیر</div><h3 id="c1h">فریاد یعنی امیدِ شنیده شدن</h3><small>منتشر شده: امروز</small><p>چرا روایت‌گری و مستندسازی خشونت‌ها نخستین گام برای تغییر ساختاری است؟</p></article>
+        <article class="card" aria-labelledby="c2h"><div class="tag">راهنما</div><h3 id="c2h">دفترچه کوچک حقوق</h3><small>ابزار عملی</small><p>شماره‌های اضطراری، مراکز حمایت و چک‌لیست مستندسازی.</p></article>
+      </div>
+    </div>
+  </section>  <!-- آخرین مقالات -->  <section class="section container" id="articles" aria-labelledby="articles-title">
+    <h2 id="articles-title">آخرین مقالات</h2>
+    <p class="muted">نمونه‌های نمایشی – شما می‌توانید بعداً با ویرایش فایل، این موارد را جایگزین کنید.</p>
+    <div class="grid" id="posts">
+      <!-- پست‌ها با JS بارگذاری می‌شوند -->
+    </div>
+  </section>  <!-- نقل‌قول الهام‌بخش / تأکید مأموریت -->  <section class="section container">
+    <div class="quote" role="note" aria-label="پیام مأموریت">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M9 7.5C9 5.567 10.567 4 12.5 4s3.5 1.567 3.5 3.5S14.433 11 12.5 11c-.34 0-.671-.043-.987-.125L9 13v-2.5C9 9.567 10.567 8 12.5 8"/></svg>
+      <div>
+        <strong>عدالت، نتیجه شنیدنِ بی‌طرفانه‌ی روایت‌هاست.</strong>
+        <div style="color:#cfc7d8">هر فریاد، گامی به سوی عدالت.</div>
+      </div>
+    </div>
+  </section>  <!-- دسته‌بندی‌ها: زنان و کودکان -->  <section class="section container" id="women">
+    <h2>حقوق زنان</h2>
+    <div class="grid">
+      <article class="post"><img alt="" src="https://images.unsplash.com/photo-1520975682031-b7a41f7f27a4?auto=format&fit=crop&w=1200&q=60"/><div class="padded"><h3>خشونت خانگی: راه‌های امن گزارش</h3><p>قدم‌به‌قدم: از مستندسازی تا مراجعه به مراکز حمایتی.</p></div></article>
+      <article class="post"><img alt="" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=60"/><div class="padded"><h3>حقوق کار و تبعیض جنسیتی</h3><p>معرفی مفاهیم تبعیض، مرخصی، و مسیرهای اعتراض.</p></div></article>
+      <article class="post"><img alt="" src="https://images.unsplash.com/photo-1541976076758-347942db1976?auto=format&fit=crop&w=1200&q=60"/><div class="padded"><h3>سلامت باروری و حق انتخاب</h3><p>منابع آموزشی و مشاوره‌های معتبر.</p></div></article>
+    </div>
+  </section>  <section class="section container" id="children">
+    <h2>حقوق کودکان</h2>
+    <div class="grid">
+      <article class="post"><img alt="" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=60"/><div class="padded"><h3>کار کودک: چگونه گزارش دهیم؟</h3><p>نشانه‌ها، شماره‌های تماس و ملاحظات ایمنی.</p></div></article>
+      <article class="post"><img alt="" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1200&q=60"/><div class="padded"><h3>آزار آنلاین و سواد رسانه‌ای</h3><p>راهنمای والدین برای حفاظت دیجیتال.</p></div></article>
+      <article class="post"><img alt="" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60"/><div class="padded"><h3>دسترسی به آموزش برابر</h3><p>چالش‌ها و راهکارهای جامعه‌محور.</p></div></article>
+    </div>
+  </section>  <!-- قوانین و منابع -->  <section class="section container" id="laws">
+    <h2>قوانین و منابع حمایتی</h2>
+    <div class="legal">
+      <div class="item">
+        <h3>شماره‌های ضروری</h3>
+        <ul>
+          <li>اورژانس اجتماعی (۱۲۳)</li>
+          <li>اورژانس (۱۱۵)</li>
+          <li>پلیس (۱۱۰)</li>
+        </ul>
+        <p class="note">در شرایط خطر فوری، ابتدا به مکان امن بروید و سپس تماس بگیرید.</p>
+      </div>
+      <div class="item">
+        <h3>کنوانسیون‌ها و اسناد بین‌المللی</h3>
+        <p>CEDAW (محو تبعیض علیه زنان)، CRC (حقوق کودک) و راهنماهای اجرایی.</p>
+      </div>
+    </div>
+  </section>  <!-- درباره و تماس -->  <section class="section container" id="about">
+    <h2>درباره «فریاد در تاریکی»</h2>
+    <div class="about">
+      <div class="box">
+        <p>ما رسانه‌ای مستقل برای انتشار تحلیل‌ها، روایت‌ها و منابع آموزشی درباره حقوق زنان و کودکان هستیم. هدف ما ایجاد دسترسی برابر به اطلاعات و توانمندسازی جامعه است.</p>
+      </div>
+      <div class="box">
+        <p><strong>چطور همراه شویم؟</strong><br/>با ارسال یادداشت، روایت یا ترجمه منابع معتبر. برای همکاری ایمیل بزنید.</p>
+      </div>
+    </div>
+  </section>  <section class="section container" id="contact">
+    <h2>تماس با ما</h2>
+    <div class="contact">
+      <form onsubmit="sendEmail(event)">
+        <label for="name">نام</label>
+        <input id="name" name="name" required placeholder="نام شما" />
+        <label for="email">ایمیل</label>
+        <input id="email" name="email" type="email" required placeholder="example@mail.com" />
+        <label for="msg">پیام</label>
+        <textarea id="msg" name="msg" required placeholder="پیام شما"></textarea>
+        <button class="btn btn-primary" type="submit">ارسال پیام</button>
+      </form>
+      <div>
+        <div class="box" style="background:#fff; padding:18px; border-radius:18px; box-shadow:var(--shadow)">
+          <h3>راهنمای مشارکت امن</h3>
+          <p>برای حفظ امنیت خود از ارسال اطلاعات هویتی غیرضروری خودداری کنید. در صورت نیاز از ایمیل‌های یک‌بارمصرف استفاده کنید.</p>
+        </div>
+      </div>
+    </div>
+  </section>  <footer>
+    <div class="container footgrid">
+      <div>
+        <div class="brand" style="margin-bottom:8px">
+          <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+          <div class="brand-title">فریاد در تاریکی</div>
+        </div>
+        <small>© <span id="year"></span> – رسانه حقوق زنان و کودکان. تمامی حقوق محفوظ است.</small>
+      </div>
+      <div>
+        <strong>دسترسی سریع</strong>
+        <ul>
+          <li><a href="#articles">آخرین مقالات</a></li>
+          <li><a href="#laws">قوانین و منابع</a></li>
+          <li><a href="#contact">تماس با ما</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>شبکه‌های اجتماعی</strong>
+        <p class="muted">به‌زودی…</p>
+      </div>
+    </div>
+  </footer>  <script>
+    // سال فوتر
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // منوی موبایل
+    function toggleMenu(){
+      const m = document.getElementById('menu');
+      if(getComputedStyle(m).display === 'none'){ m.style.display = 'flex'; m.style.flexDirection = 'column'; }
+      else{ m.style.display = 'none'; }
+    }
+
+    // داده‌های نمونه پست‌ها (می‌تونید جایگزین کنید)
+    const samplePosts = [
+      {title:'راهنمای گزارش خشونت خانگی', img:'https://images.unsplash.com/photo-1495344517868-8ebaf0a2044a?auto=format&fit=crop&w=1200&q=60', excerpt:'ایمن بمانید، شواهد را ثبت کنید، از خطوط حمایتی کمک بگیرید.', date:'1404/05/01'},
+      {title:'پرسش‌های حقوقی رایج برای مادران سرپرست', img:'https://images.unsplash.com/photo-1520975682031-b7a41f7f27a4?auto=format&fit=crop&w=1200&q=60', excerpt:'حقوق کار، حضانت، مستمری و خدمات حمایتی.', date:'1404/04/22'},
+      {title:'آشنایی با کنوانسیون حقوق کودک (CRC)', img:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60', excerpt:'اصول چهارگانه: عدم تبعیض، منافع عالیه، بقا و رشد، مشارکت.', date:'1404/03/15'},
+      {title:'امنیت دیجیتال برای نوجوانان', img:'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1200&q=60', excerpt:'حریم خصوصی، رمزهای قوی، گزارش آزار آنلاین.', date:'1404/02/10'},
+      {title:'فرهنگ‌نامه کوچک حقوقی', img:'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=60', excerpt:'تعاریف ساده برای مفاهیم حقوقی پرکاربرد.', date:'1404/01/29'},
+      {title:'چگونه روایت خود را بنویسیم؟', img:'https://images.unsplash.com/photo-1541976076758-347942db1976?auto=format&fit=crop&w=1200&q=60', excerpt:'اصول روایت امن، بدون افشای هویت.', date:'1403/12/18'}
+    ];
+
+    const postsEl = document.getElementById('posts');
+    samplePosts.forEach(p=>{
+      const el = document.createElement('article');
+      el.className = 'post';
+      el.innerHTML = `<img alt="" src="${p.img}"/><div class="padded"><h3>${p.title}</h3><p>${p.excerpt}</p><small style="color:var(--muted)">تاریخ: ${p.date}</small></div>`;
+      postsEl.appendChild(el);
+    });
+
+    // ارسال ایمیل با mailto (رایگان)
+    function sendEmail(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      const subject = encodeURIComponent('پیام از وب‌سایت فریاد در تاریکی');
+      const body = encodeURIComponent(`نام: ${name}\nایمیل: ${email}\n\n${msg}`);
+      window.location.href = `mailto:example@mail.com?subject=${subject}&body=${body}`;
+    }
+  </script></body>
 </html>
